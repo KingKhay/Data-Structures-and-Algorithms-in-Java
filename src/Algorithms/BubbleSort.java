@@ -12,8 +12,10 @@ public class BubbleSort {
             //Inner Loop
             //We traverse from the front and swap values that should be swapped to the last unsorted index//
             for(int i = 0; i<lastIndexToBeSorted;i++){
+                //if the value at the current index is greater than that of the value in the next index we swap them or else move unto
+                // the next index//
                 if(numbers[i]>numbers[i+1]){
-                    swap(numbers,i,i+1);
+                    swap(numbers,i,i+1); 
                 }
             }
         }
