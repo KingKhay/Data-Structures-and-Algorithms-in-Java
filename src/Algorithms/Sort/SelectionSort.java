@@ -1,9 +1,10 @@
-package Algorithms;
+package Algorithms.Sort;
 
 import java.util.Arrays;
 
-public class Selection_Sort {
+public class SelectionSort {
     public static void main(String[] args){
+
        int[] arrayOfIntegers = {34,61,-9,4,-31,13,92};
         //Outer Loop starting from the last index to index 1//
        for(int lastIndexToBeSorted = arrayOfIntegers.length-1;lastIndexToBeSorted>0;lastIndexToBeSorted--){
