@@ -15,7 +15,7 @@ public class ShellSort {
                 //while loop runs as long as there is space of viable length to the back of the array
                 //and the values behind are sorted we move to the back of the array//
                 while(j>=gap && newElement<arrayOfIntegers[j-gap]){
-                    arrayOfIntegers[j] = arrayOfIntegers[j-1];
+                    arrayOfIntegers[j] = arrayOfIntegers[j-gap];
                     j-=gap;
                 }
                 arrayOfIntegers[j] = newElement;
@@ -23,10 +23,5 @@ public class ShellSort {
         }
         Arrays.stream(arrayOfIntegers)
                 .forEach(System.out::println);
-    }
-    public static void swap(int array[], int i, int j){
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 }
