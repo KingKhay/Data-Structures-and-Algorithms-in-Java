@@ -1,70 +1,51 @@
 package Algorithms.Sort;
 
+
+import java.util.Arrays;
+
 public class MergeSort {
-    private int data[];
-    private int length;
-    private int[] tempArray;
-
-    public void sort(int[] inputData) {
-        this.data = inputData;
-        this.length = inputData.length;
-        this.tempArray = new int[length];
-        mergeSort(0, length - 1);
+    public static void main(String[] args) {
+        int[] numbers = {12,73,-9,45,20,-21};
+        mergeSort(numbers,0,numbers.length-1);
+        Arrays.stream(numbers)
+                .forEach(System.out::println);
     }
-
-    private void mergeSort(int lowerIndex, int higherIndex) {
-        if (lowerIndex < higherIndex) {
-            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
-            //Sorts the left side of the array
-            mergeSort(lowerIndex, middle);
-            //Sorts the right side of the array
-            mergeSort(middle + 1, higherIndex);
-            //Merge both sides
-            mergeParts(lowerIndex, middle, higherIndex);
+    public static void mergeSort(int[] intArray,int lowermost,int upperbound){
+        if(upperbound>lowermost){
+            int mid = (upperbound+lowermost)/2;
+            mergeSort(intArray,lowermost,mid);
+            mergeSort(intArray,mid+1,upperbound);
+            merge(intArray,lowermost,mid,upperbound);
         }
     }
+    public static void merge(int[] myArray,int lowerbound,int mid,int upperbound){
+        int i = lowerbound;
+        int j = mid+1;
+        int k = lowerbound;
+        int[] temp = new int[myArray.length];
 
-    private void mergeParts(int lowerIndex, int middle, int higherIndex) {
-        for (int i = lowerIndex; i <= higherIndex; i++) {
-            tempArray[i] = data[i];
-        }
-        int i = lowerIndex;
-        int j = middle + 1;
-        int k = lowerIndex;
-        while (i <= middle && j <= higherIndex) {
-            if (tempArray[i] <= tempArray[j]) {
-                data[k] = tempArray[i];
+        while(i<=mid && j<=upperbound) {
+            if (myArray[i] <= myArray[j]) {
+                temp[k] = myArray[i];
                 i++;
             } else {
-                data[k] = tempArray[j];
+                temp[k] = myArray[j];
                 j++;
             }
             k++;
         }
-        while (i <= middle) {
-            data[k] = tempArray[i];
+        while(j<=upperbound) {
+            temp[k] = myArray[j];
+            j++;
             k++;
+        }
+        while (i <= mid) {
+            temp[k] = myArray[i];
             i++;
+            k++;
         }
-    }
-
-    private static void printNumbers(int[] data) {
-        for (int i = 0; i < data.length; i++) {
-            System.out.print(data[i]);
-            if(i != data.length-1){
-                System.out.print(", ");
-            }
+        for(int l=lowerbound;l<=upperbound;l++){
+            myArray[l] = temp[l];
         }
-        System.out.println("\n");
-    }
-
-    public static void main(String[] args){
-        MergeSort test = new MergeSort();
-        int[] data = {38, 27, 43, 3, 9, 82, 10};
-        //Print array elements
-        printNumbers(data);
-        test.sort(data);
-        //Print sorted array elements
-        printNumbers(data);
     }
 }
