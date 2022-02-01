@@ -1,2 +1,4 @@
-package Data_Structures.Linear;public class Queue {
+package Data_Structures.Linear;
+
+public class Queue {
 }

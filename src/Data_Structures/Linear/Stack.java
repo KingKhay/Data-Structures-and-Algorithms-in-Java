@@ -1,2 +1,4 @@
-package Data_Structures.Linear;public class Stack {
+package Data_Structures.Linear;
+
+public class Stack {
 }
