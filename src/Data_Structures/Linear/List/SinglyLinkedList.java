@@ -8,6 +8,10 @@ public class SinglyLinkedList {
         theList.insert("Johnny");
 
         theList.printList();
+        System.out.println();
+
+        theList.remove();
+        theList.printList();
     }
 }
 //This is the Singly LinkedList class
@@ -23,13 +27,26 @@ class SLL<T>{
        //Set that node as the new Head of the list since it will be stored at the beginning//
        head = newNode;
    }
+
+   public Node<T> remove(){
+       if(isEmpty()){
+           return null;
+       }
+       Node<T> toBeRemovedNode = head;
+       head = head.getNext();
+       return toBeRemovedNode;
+   }
+   public boolean isEmpty(){
+       return head == null;
+   }
+
    public void printList(){
        System.out.print("Head -> ");
        //Set the head to a temp variable named current//
        Node<T> current = head;
        //While the current is not pointing to null....That is as the current node is not null print out the data//
        while(current!=null){
-           System.out.print(current +"->");
+           System.out.print(current +" -> ");
            current = current.getNext();
        }
        //Print null when we get to the end of the list//
