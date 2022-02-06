@@ -27,14 +27,14 @@ class LinkedListStack<T>{
     }
 
     public void push(T data){
-        theList.addFirst(data);
+        theList.push(data);
     }
 
     public T pop(){
-        return theList.removeFirst();
+        return theList.pop();
     }
     public T peek(){
-        return theList.getFirst();
+        return theList.peek();
     }
 
     public boolean isEmpty(){
